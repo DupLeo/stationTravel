@@ -1,5 +1,5 @@
 import { createClient, cacheExchange, fetchExchange } from '@urql/core';
-import { vehicleListQuery, vehicleDetailsQuery } from '../graphsql/vehiculeQueries.js';
+import { vehicleListQuery } from '../graphsql/vehiculeQueries.js';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -24,14 +24,11 @@ const client = createClient({
 export const getVehicleList = async ({ page, size = 10, search = '' }) => {
     try {
         const result = await client.query(vehicleListQuery, { page, size, search }).toPromise();
-        const vehicles = await Promise.all(result.data.vehicleList.map(async (vehicle) => {
-            const vehicleInfo = await getVehicleDetails(vehicle.id);
-            
-            return {
-                name: vehicleInfo.naming.model,
-                image: vehicleInfo.media.image.url,
-                range: vehicleInfo.range.best.highway
-            };
+
+        const vehicles = result.data.vehicleList.map(vehicle => ({
+            name: vehicle.naming.model,
+            image: vehicle.media.image.thumbnail_url,
+            range: vehicle.range.chargetrip_range?.worst || 'N/A'
         }));
 
         return vehicles;  
