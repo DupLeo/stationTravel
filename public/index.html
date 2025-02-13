@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trajet avec OpenRouteService</title>
+    <!-- Inclure la bibliothèque Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <div id="search_bar">
+        <form id="searchForm">
+            <div class="input_search">
+                <input type="text" id="vehicle" name="vehicle" placeholder="Choisir un véhicule">
+                <div id="vehicle_suggestions"></div>
+            </div>
+            <div class="input_search">
+                <input type="text" id="start" name="start" placeholder="Ville de départ">
+                <div id="start_suggestions"></div>
+            </div>
+            <div class="input_search">
+                <input type="text" id="end" name="end" placeholder="Ville d'arrivée">
+                <div id="end_suggestions"></div> 
+            </div>
+            <input id="valid_input" type="submit" value="Rechercher">
+        </form>
+    </div>
+    <div id="time_route">
+        <t>Temps de trajet estimé</t>
+        <t id="time"></t>
+    </div>
+
+</body>
+
+</html>
