@@ -99,6 +99,8 @@ async function loadRoute(map, startCoords, endCoords, dataRange) {
         const response = await fetch(`http://localhost:3000/api/direction?startLat=${startCoords.lat}&startLon=${startCoords.lon}&endLat=${endCoords.lat}&endLon=${endCoords.lon}&range=${dataRange}`);
         const data = await response.json();
 
+        insertHtmlDistance(data.data.routes[0].summary.distance/1000)
+
         if (!data.data || !data.data.routes || data.data.routes.length === 0) {
             throw new Error("Données de l'itinéraire manquantes !");
         }
@@ -207,4 +209,8 @@ export function initMap(){
             console.error("Erreur lors de la récupération des coordonnées :", error);
         }
     });
+}
+
+function insertHtmlDistance(distance){
+    document.getElementById('distance').innerHTML = distance + " km";
 }

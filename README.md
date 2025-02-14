@@ -24,6 +24,24 @@ npm install
 pip install spyne requests
 ```
 
+### Configuration du fichier .env
+
+Avant de démarrer l'API, assurez-vous de configurer un fichier `.env` à la racine du projet avec les clés suivantes :
+
+```env
+API_KEY=VOTRE_CLE_API_OPENROUTESERVICE
+API_KEY_OPENCAGEDATA=VOTRE_CLE_API_OPENCAGEDATA
+CLIENT_ID=VOTRE_CLIENT_ID
+APP_ID=VOTRE_APP_ID
+PORT=3000
+```
+
+- **API_KEY** : Clé API pour OpenRouteService (https://api.openrouteservice.org)
+- **API_KEY_OPENCAGEDATA** : Clé API pour OpenCageData (https://api.opencagedata.com)
+- **CLIENT_ID** : Identifiant client (si applicable)
+- **APP_ID** : Identifiant d'application (si applicable)
+- **PORT** : Port d'écoute du serveur
+
 ### Démarrage des serveurs
 
 #### Lancer le serveur Node.js
@@ -51,7 +69,7 @@ python soap_server.py
   - `range` (int) : Portée du trajet
 - **Réponse:**
 
-L'API /direction retourne un itinéraire détaillé, comprenant des informations sur les distances, durées, instructions de navigation, et points de passage. Le format est directement compatible avec OpenRouteService et peut être utilisé pour afficher un trajet sur une carte.
+L'API `/direction` retourne un itinéraire détaillé, comprenant des informations sur les distances, durées, instructions de navigation, et points de passage. Le format est directement compatible avec OpenRouteService et peut être utilisé pour afficher un trajet sur une carte.
 
 ```json
 {
@@ -108,7 +126,6 @@ L'API /direction retourne un itinéraire détaillé, comprenant des informations
     }
 }
 ```
-
 
 ### 2. Obtenir la liste des véhicules
 - **URL:** `/vehicules`
@@ -186,6 +203,6 @@ L'API /direction retourne un itinéraire détaillé, comprenant des informations
 
 ---
 
-## Auteur
-Léo
+## Exemple site
+https://stationtravel.azurewebsites.net/
 
